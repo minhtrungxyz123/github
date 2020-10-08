@@ -1,0 +1,53 @@
+<div class="product">
+    <!-- Id sản phẩm -->
+    <div class="product__id">
+        mã sản phẩm: {{product.id}}
+    </div>
+    <!-- hình ảnh sản phẩm -->
+    <div class="product__img">
+        <a href="#">
+
+        </a>
+        <img src={{product.img}} alt="image">
+    </div>
+    <!-- thông tin sản phẩm -->
+    <div class="product__info">
+        <!-- Tên sản phẩm -->
+        <div class="product__name">
+            <a href="#">{{product.name}}</a>
+        </div>
+        <!-- Giá cũ và discount -->
+        <div>
+            <span class="product__last-price">
+                {{product.lastPrice}} đ
+            </span>
+            <span class="product__discount">
+                (tiết kiệm: {{product.discount}}%)
+            </span>
+        </div>
+        <!-- giá sau khi đã tính discount -->
+        <div class="product__price">
+            {{product.price}} đ
+        </div>
+    </div>
+    <!-- Trạng thái và hành động -->
+    <div class="product__action">
+        <!-- hiển thị trạng thái -->
+        <div class="product__status" *ngIf="product.quantity > 0">
+            <i class='bx bx-check'></i>
+            <span>Còn hàng</span>
+        </div>
+        <div class="product__status-false" *ngIf="product.quantity <= 0">
+          <i class='bx bx-x'></i>
+          <span>Hết hàng</span>
+        </div>
+        <!-- Thêm vào giỏ -->
+        <div class="product__add-to-cart" (click) = "AddProductToCart(product)">
+          <i class='bx bx-cart-alt' ></i> Thêm vào giỏ
+        </div>
+    </div>
+</div>
+
+<div>
+  số lượng sản phẩm trong giỏ: {{cart.count}}
+</div>
